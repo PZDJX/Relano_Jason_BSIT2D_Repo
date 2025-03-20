@@ -1,7 +1,9 @@
+
+var randomLoc = Math.floor(Math.random() * 5)
 //Durlaring cansable
-var location1 = 3;
-var location2 = 4;
-var location3 = 5;
+var location1 = randomLoc + 1;
+var location2 = location1 + 1;
+var location3 = location2 + 1;
 
 var guess;
 var hit = 0;
@@ -16,6 +18,11 @@ while (isSunk == false)  {
     if (guess < 0 || guess > 6){
     alert("Please enter a valid cell number!")
     }
+    
+        if(guess == null) {
+            alert("Thank you for playing");
+            break;
+        }
     else {
         guesses = guesses+1;
         if (guess == locationi ||guess == location2 || guess == location3) {
@@ -29,4 +36,10 @@ while (isSunk == false)  {
 }
 
 var stats = "You sank my battleship at" + "guesses";
+alert(stats);
+
+var accuracy = (guesses > 0 ?(hits/guesses) * 100:0).toFixed(2);
+var stats = "You took" + guesses + "guesses to sank my battleship!" + "\n" +
+"accuracy: " + accuracy + "%";
+
 alert(stats);
